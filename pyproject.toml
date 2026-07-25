@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stemextract"
+version = "0.2.0"
+description = "A lightweight, user-friendly HTDemucs music stem separation library"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [
+  { name = "stemextract contributors" },
+]
+keywords = [
+  "audio",
+  "demucs",
+  "htdemucs",
+  "music",
+  "source-separation",
+  "stem-separation",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Typing :: Typed",
+]
+dependencies = [
+  "demucs>=4.0.1,<5",
+  "numpy>=1.24",
+  "soundfile>=0.12",
+  "torch>=2.0",
+  "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "mypy>=1.10",
+  "pytest>=8",
+  "pytest-cov>=5",
+  "ruff>=0.5",
+  "twine>=5",
+]
+
+[tool.setuptools.packages.find]
+include = ["stemextract*"]
+
+[tool.setuptools.package-data]
+stemextract = ["py.typed"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "RUF"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unreachable = true
+packages = ["stemextract"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
