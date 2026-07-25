@@ -81,6 +81,54 @@ the selected channel-first `torch.Tensor` objects. This makes it possible to
 save the same separation again in another supported format without repeating
 inference.
 
+## Complete local file example
+
+The following example separates `/Users/mac/Desktop/1test.wav` and writes the
+four WAV stems to `/Users/mac/Desktop/1test_stems`. It is also available as
+[`examples/extract_local_file.py`](examples/extract_local_file.py).
+
+```python
+from pathlib import Path
+
+import stemextract
+
+
+INPUT_FILE = Path("/Users/mac/Desktop/1test.wav")
+OUTPUT_DIR = Path("/Users/mac/Desktop/1test_stems")
+
+
+def main() -> None:
+    if not INPUT_FILE.is_file():
+        raise SystemExit(f"Input audio file does not exist: {INPUT_FILE}")
+
+    try:
+        tracks = stemextract.extract(
+            INPUT_FILE,
+            OUTPUT_DIR,
+            device="auto",
+            progress=True,
+        )
+    except stemextract.StemExtractError as exc:
+        raise SystemExit(f"Stem separation failed: {exc}") from exc
+
+    print("Separation completed successfully:")
+    for stem_name in tracks:
+        print(f"  {stem_name}: {OUTPUT_DIR / f'{stem_name}.wav'}")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Run the example from a source checkout with:
+
+```bash
+python examples/extract_local_file.py
+```
+
+The output directory will contain `vocals.wav`, `drums.wav`, `bass.wav`, and
+`other.wav`.
+
 ## Selective stems
 
 HTDemucs produces four sources in one inference pass. Selective calls export
