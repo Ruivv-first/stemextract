@@ -7,7 +7,7 @@ folder automation. It does not train or modify an AI model.
 
 The PyPI distribution and Python import are both named `stemextract`.
 
-> stemsep is an open-source engineering project that simplifies state-of-the-art audio source separation for music creators. The underlying deep learning separation model is developed by Meta AI (HTDemucs). This project only provides optimized user-facing encapsulation, workflow automation, and multi-format compatibility layers.
+> stemextract is an open-source engineering project that simplifies state-of-the-art audio source separation for music creators. The underlying deep learning separation model is developed by Meta AI (HTDemucs). This project only provides optimized user-facing encapsulation, workflow automation, and multi-format compatibility layers.
 
 ## Features
 
