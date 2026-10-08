@@ -1,6 +1,7 @@
 # stemextract
 
 [![PyPI downloads per month](https://img.shields.io/pypi/dm/stemextract)](https://pypi.org/project/stemextract/)
+[![Total downloads](https://img.shields.io/pepy/dt/stemextract?label=total%20downloads)](https://pepy.tech/projects/stemextract)
 
 `stemextract` is a lightweight, typed Python library for extracting music stems
 with Meta AI's pretrained HTDemucs model. It adds a stable one-line API,
